@@ -1,13 +1,13 @@
-import Input from "./form/Input.js";
-import Select from "./form/Select.js";
+import Table from 'react-bootstrap/Table';
 import { Fragment, useState } from "react";
 import OptionsCategorie from "./data/OptionsCategorie.js";
 import OptionsNiveau from './data/OptionsNiveau.js'
 import Textarea from "./form/Textarea.js";
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Table from 'react-bootstrap/Table';
+import ButtonSubmit from "./form/Button.js";
+import Input from "./form/Input.js";
+import Select from "./form/Select.js";
+import ListVocab from "./data/data.js";
+import CreateCards from "./Card.js";
 
 const AddVocabIntoList = () => {
 
@@ -19,7 +19,11 @@ const AddVocabIntoList = () => {
     const [valueThem,setValueThem] = useState('')
     const [valueSynonyme,setValueSynonyme] = useState('')
     const [valueAntonyme,setValueAntonyme] = useState('')
+    const [addVocabIntoCard, setAddVocabIntoCard] = useState([...ListVocab])
 
+    console.log(addVocabIntoCard)
+
+  
 
     const handleChangeValueWord = (event) => {
         setValueWord(event.target.value)
@@ -32,6 +36,7 @@ const AddVocabIntoList = () => {
 
     const handleChangeValueDefinition = (event) => {
         setValueDefinition(event.target.value)
+
     }
 
     const handleChangeValueExemple = (event) => {
@@ -54,9 +59,38 @@ const AddVocabIntoList = () => {
         setValueAntonyme(event.target.value)
     }
 
+    const addNewList = () => {
+
+        if (valueWord,valueCategorie,valueDefinition,valueExemple,valueNiveau,valueThem !== "") {
+            const newList = {
+           
+                word:  valueWord,
+                cateGrammaticale: valueCategorie,
+                definition: valueDefinition,
+                exemple: valueExemple,
+                synonyme:valueSynonyme,
+                antonyme:valueAntonyme,
+                niveau:valueNiveau,
+                theme:valueThem
+                }
+                setAddVocabIntoCard([...addVocabIntoCard, newList])
+                setValueWord('')
+                setValueCategorie('')
+                setValueDefinition('')
+                setValueExemple('')
+                setValueNiveau('')
+                setValueThem('')
+                setValueSynonyme('')
+                setValueAntonyme('')
+        } else {
+            alert(" text please!");
+        }  
+    }
+
+
     return (
     <Fragment>
-         <Table striped bordered hover style={{margin: "0% 5%", width: '100%', textAlign: "center",  padding: "15px",  border: "1px solid"}}>
+         <Table id= "tableAddVocab">
             <thead>
                 <tr>
                 <th>Mot</th>
@@ -70,17 +104,6 @@ const AddVocabIntoList = () => {
                 </tr>
             </thead>
             <tbody>
-                {/* <tr>
-                <td>{valueWord}</td>
-                <td>{valueCategorie}</td>
-                <td>{valueDefinition}</td> 
-                <td>{valueExemple}</td>
-                <td>{valueSynonyme}</td>
-                <td>{valueAntonyme}</td>
-                <td>{valueNiveau}</td>
-                <td>{valueThem}</td>
-                </tr> */}
-
                 <tr>
                 <td>
                     <Input
@@ -119,6 +142,17 @@ const AddVocabIntoList = () => {
                 </td>
                 <td>
                     <Textarea
+                    htmlFor="exemple" 
+                    id="exemple"
+                    name="exemple"
+                    placeholder="Veuillez tapper l'exemple de ce mot ici!"
+                    value={valueExemple}
+                    onChange={handleChangeValueExemple}
+                    >
+                    </Textarea>
+                </td>
+                <td>
+                    <Textarea
                     htmlFor="synonyme" 
                     id="synonyme"
                     name="synonyme"
@@ -139,17 +173,7 @@ const AddVocabIntoList = () => {
                     >
                     </Textarea>
                 </td>
-                <td>
-                    <Textarea
-                    htmlFor="Exemple" 
-                    id="exemple"
-                    name="exemple"
-                    placeholder="Veuillez tapper votre (vos) exemple (exemples) de ce mot ici!"
-                    value={valueExemple}
-                    onChange={handleChangeValueExemple}
-                    >
-                    </Textarea>
-                </td>
+           
                 <td>
                     <Select
                     label="Niveau"
@@ -176,128 +200,22 @@ const AddVocabIntoList = () => {
                 </tr>
             </tbody>
     </Table>
-    {/* <Container  style={{marginLeft: "5rem"}}>
-        <Row>
-            <Col xs={6} md={4}>
-                <Input
-                    label = "Mots"
-                    type="text"
-                    name = "word"
-                    placeholder = "Ajouter de nouveau mot"
-                    value={valueWord}
-                    onChange={handleChangeValueWord}
-                />
-            </Col>
-            
-            <Col xs={6} md={4}>
-                <Select 
-                label = "Catégorie grammaticale"
-                id = "categorie-grammaticale-select"
-                name= "categorie-grammaticale"
-                onChange={onOptionChangeHandler}
-                value = {valueCategorie}
-                options={OptionsCategorie}
-                >
-                    {OptionsCategorie.map((option,index) => {
-                        
-                            <option key = {index} value={option.value}>{option.label}</option>
-                        
-                    })}
-                </Select>
-                <h3>Catégorie grammaticale: {valueCategorie} </h3>
-            </Col>
+    <ButtonSubmit onClick={addNewList}></ButtonSubmit>
 
-            <Col >
-                <Textarea
-                htmlFor="definition" 
-                label="Définition"
-                id="definition"
-                name="definition"
-                placeholder="Veuillez tapper la définition de ce mot ici!"
-                value={valueDefinition}
-                onChange={handleChangeValueDefinition}
-                >
-                </Textarea>
-                <h3>Définition: {valueDefinition} </h3>
-            </Col> */}
+    {addVocabIntoCard.map((list,index) =>    
+    <CreateCards 
+    key = {index}
+    word= {list.word}
+    cateGrammaticale= {list.cateGrammaticale}
+    definition= {list.definition}
+    exemple= {list.exemple}
+    antonyme= {list.antonyme}
+    synonyme= {list.synonyme}
+    niveau=  {list.niveau}
+    theme= {list.theme}
+    />
+  )}
 
-            {/* <Col >
-                <Textarea
-                htmlFor="synonyme" 
-                label="Synonyme"
-                id="synonyme"
-                name="synonyme"
-                placeholder="Veuillez tapper Synonyme de ce mot ici!"
-                value={valueSynonyme}
-                onChange={handleValueSynonyme}
-                >
-                </Textarea>
-                <h3>Synonyme: {valueSynonyme} </h3>
-            </Col> */}
-
-            {/* <Col >
-                <Textarea
-                htmlFor="antonyme" 
-                label="Antonyme"
-                id="antonyme"
-                name="antonyme"
-                placeholder="Veuillez tapper Antonyme de ce mot ici!"
-                value={valueAntonyme}
-                onChange={handleValueAntonyme}
-                >
-                </Textarea>
-                <h3>Antonyme: {valueAntonyme} </h3>
-            </Col> */}
-
-
-            {/* <Col >
-                <Textarea
-                htmlFor="Exemple" 
-                label="Exemple"
-                id="exemple"
-                name="exemple"
-                placeholder="Veuillez tapper votre (vos) exemple (exemples) de ce mot ici!"
-                value={valueExemple}
-                onChange={handleChangeValueExemple}
-                >
-                </Textarea>
-                <h3>Exemple: {valueExemple} </h3>
-            </Col>
-
-            <Col >
-                <Select
-                label="Niveau"
-                id="niveau"
-                name="niveau"
-                value={valueNiveau}
-                onChange={handleChangeValueNiveau}
-                options={OptionsNiveau}
-                >
-                    {OptionsNiveau.map((option,index) => {
-                        <option key={index} value={option.value}>{option.label}</option>
-                    })}
-                </Select>
-                <h3>Niveau: {valueNiveau} </h3>
-            </Col>
-
-            <Col >
-                <Input
-                label="Thème"
-                type="text"
-                id="theme"
-                name="theme"
-                value={valueThem}
-                onChange={handleChangeValueThem}
-                />
-                <h3>Thème: {valueThem} </h3>
-            </Col>
-
-        </Row>
-
-       
-    </Container> */}
-
-   
     </Fragment>
     )
 }

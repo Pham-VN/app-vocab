@@ -15,3 +15,20 @@ textarea {
     width: 70%;
     padding: 12px;
 }
+#tableAddVocab {margin: 5% 11%;
+    width: 77%;
+    padding: 33px;
+    border: 3px solid;}
+#buttonAddVocab {
+    background-color: #5a3988;
+    border-radius: 10px;
+    border: 4px double #cccccc;
+    color: #eeeeee;
+    font-size: 28px;
+    padding: 20px;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin:-5% 38%;;}
