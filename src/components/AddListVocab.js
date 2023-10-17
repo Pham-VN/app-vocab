@@ -2,12 +2,16 @@ import Table from 'react-bootstrap/Table';
 import { Fragment, useState } from "react";
 import OptionsCategorie from "./data/OptionsCategorie.js";
 import OptionsNiveau from './data/OptionsNiveau.js'
+import OptionsTheme from './data/OptionsTheme.js'
+
 import Textarea from "./form/Textarea.js";
 import ButtonSubmit from "./form/Button.js";
 import Input from "./form/Input.js";
 import Select from "./form/Select.js";
 import ListVocab from "./data/data.js";
 import CreateCards from "./Card.js";
+import FilterNiveau from './filter/filterNiveau.js';
+import FilterByTheme from './filter/filterByTheme.js';
 
 const AddVocabIntoList = () => {
 
@@ -23,7 +27,6 @@ const AddVocabIntoList = () => {
 
     console.log(addVocabIntoCard)
 
-  
 
     const handleChangeValueWord = (event) => {
         setValueWord(event.target.value)
@@ -59,6 +62,7 @@ const AddVocabIntoList = () => {
         setValueAntonyme(event.target.value)
     }
 
+    
     const addNewList = () => {
 
         if (valueWord,valueCategorie,valueDefinition,valueExemple,valueNiveau,valueThem !== "") {
@@ -86,7 +90,6 @@ const AddVocabIntoList = () => {
             alert(" text please!");
         }  
     }
-
 
     return (
     <Fragment>
@@ -186,23 +189,32 @@ const AddVocabIntoList = () => {
                         {OptionsNiveau.map((option,index) => {
                             <option key={index} value={option.value}>{option.label}</option>
                         })}
+
                     </Select>
+                    {/* <button onClick={filterNiveau}>test niveau</button> */}
+
                 </td>
                 <td>
-                    <Input
-                    type="text"
+                <Select
+                    label="Theme"
                     id="theme"
                     name="theme"
                     value={valueThem}
                     onChange={handleChangeValueThem}
-                    />
+                    options={OptionsTheme}
+                    >
+                        {OptionsTheme.map((option,index) => {
+                            <option key={index} value={option.value}>{option.label}</option>
+                        })}
+
+                    </Select>
                 </td>
                 </tr>
             </tbody>
     </Table>
     <ButtonSubmit onClick={addNewList}></ButtonSubmit>
 
-    {addVocabIntoCard.map((list,index) =>    
+    {/* {addVocabIntoCard.map((list,index) =>    
     <CreateCards 
     key = {index}
     word= {list.word}
@@ -214,9 +226,19 @@ const AddVocabIntoList = () => {
     niveau=  {list.niveau}
     theme= {list.theme}
     />
-  )}
+  )} */}
 
-    </Fragment>
+   <div>
+                <FilterNiveau
+                    addVocabIntoCard={addVocabIntoCard}
+                />
+            
+                <FilterByTheme
+                    addVocabIntoCard={addVocabIntoCard}
+                />
+        
+   </div>
+   </Fragment>
     )
 }
 export default AddVocabIntoList;

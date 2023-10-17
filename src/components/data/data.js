@@ -16,7 +16,7 @@ const ListVocab = [
       synonyme: "carpooling",
       antonyme: "autosolisme",
       niveau : "B1",
-      theme: "transport"
+      theme: "voyage"
      },
      {
       word: "consultation",
@@ -33,7 +33,7 @@ const ListVocab = [
       exemple : "Manger du pain.",
       synonyme: "consomer",
       niveau : "A1",
-      theme: "nourriture"
+      theme: "aliments"
      }
 ]
 export default ListVocab;
