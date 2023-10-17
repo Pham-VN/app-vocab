@@ -12,7 +12,9 @@ import ListVocab from "./data/data.js";
 import CreateCards from "./Card.js";
 import FilterNiveau from './filter/filterNiveau.js';
 import FilterByTheme from './filter/filterByTheme.js';
+import FilterNiveauAndTheme from './filter/filter.js';
 
+import "./addEditFilter.css"
 const AddVocabIntoList = () => {
 
     const [valueWord, setValueWord] = useState('');
@@ -228,14 +230,17 @@ const AddVocabIntoList = () => {
     />
   )} */}
 
-   <div>
-                <FilterNiveau
+   <div id="zoneFilter">  
+                {/* <FilterNiveau
                     addVocabIntoCard={addVocabIntoCard}
                 />
             
                 <FilterByTheme
                     addVocabIntoCard={addVocabIntoCard}
-                />
+                /> */}
+                <h1>Zone Filter</h1>
+                <FilterNiveauAndTheme 
+                addVocabIntoCard={addVocabIntoCard}/>
         
    </div>
    </Fragment>
