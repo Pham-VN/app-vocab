@@ -1,5 +1,7 @@
-const ButtonSubmit = ({onClick}) => {
+
+const ButtonSubmit = ({index,onClick,children}) => {
     return (
-    <button id="buttonAddVocab" onClick={onClick}>Add vocabulaire</button>)
+    <button id={index} onClick={onClick}>{children}</button>)
 }
 export default ButtonSubmit;
+// buttonAddVocab

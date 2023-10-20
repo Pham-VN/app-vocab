@@ -3,7 +3,6 @@ import { Fragment, useState } from "react";
 import OptionsCategorie from "./data/OptionsCategorie.js";
 import OptionsNiveau from './data/OptionsNiveau.js'
 import OptionsTheme from './data/OptionsTheme.js'
-
 import Textarea from "./form/Textarea.js";
 import ButtonSubmit from "./form/Button.js";
 import Input from "./form/Input.js";
@@ -13,6 +12,8 @@ import CreateCards from "./Card.js";
 import FilterNiveau from './filter/filterNiveau.js';
 import FilterByTheme from './filter/filterByTheme.js';
 import FilterNiveauAndTheme from './filter/filter.js';
+import { FiEdit } from 'react-icons/fi';
+
 
 import "./addEditFilter.css"
 const AddVocabIntoList = () => {
@@ -26,6 +27,8 @@ const AddVocabIntoList = () => {
     const [valueSynonyme,setValueSynonyme] = useState('')
     const [valueAntonyme,setValueAntonyme] = useState('')
     const [addVocabIntoCard, setAddVocabIntoCard] = useState([...ListVocab])
+
+    const [currentEditingTodo, setCurrentEditingTodo] = useState(0);
 
     console.log(addVocabIntoCard)
 
@@ -79,6 +82,7 @@ const AddVocabIntoList = () => {
                 niveau:valueNiveau,
                 theme:valueThem
                 }
+
                 setAddVocabIntoCard([...addVocabIntoCard, newList])
                 setValueWord('')
                 setValueCategorie('')
@@ -88,10 +92,17 @@ const AddVocabIntoList = () => {
                 setValueThem('')
                 setValueSynonyme('')
                 setValueAntonyme('')
+
         } else {
             alert(" text please!");
         }  
     }
+
+    const handleClick = (event) => {
+        const id = event.currentTarget.id;
+        console.log(id);
+    }
+
 
     return (
     <Fragment>
@@ -214,11 +225,11 @@ const AddVocabIntoList = () => {
                 </tr>
             </tbody>
     </Table>
-    <ButtonSubmit onClick={addNewList}></ButtonSubmit>
+    <ButtonSubmit index="buttonAddVocab" onClick={addNewList}>Ajouter vocabulaire</ButtonSubmit>
 
-    {/* {addVocabIntoCard.map((list,index) =>    
+    {addVocabIntoCard.map((list,index) =>  
+   <div key = {index} >
     <CreateCards 
-    key = {index}
     word= {list.word}
     cateGrammaticale= {list.cateGrammaticale}
     definition= {list.definition}
@@ -227,22 +238,23 @@ const AddVocabIntoList = () => {
     synonyme= {list.synonyme}
     niveau=  {list.niveau}
     theme= {list.theme}
+    onClick={handleClick}
     />
-  )} */}
 
-   <div id="zoneFilter">  
-                {/* <FilterNiveau
-                    addVocabIntoCard={addVocabIntoCard}
-                />
-            
-                <FilterByTheme
-                    addVocabIntoCard={addVocabIntoCard}
-                /> */}
+    <ButtonSubmit
+    index= {index}
+    onClick={handleClick}
+    ><FiEdit/>Edit Card</ButtonSubmit>
+    </div>
+  )}
+
+   {/* <div id="zoneFilter">  
                 <h1>Zone Filter</h1>
                 <FilterNiveauAndTheme 
                 addVocabIntoCard={addVocabIntoCard}/>
         
-   </div>
+   </div> */}
+
    </Fragment>
     )
 }

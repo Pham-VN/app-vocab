@@ -1,12 +1,17 @@
 import Card from 'react-bootstrap/Card';
-const CreateCards = ({index, word,cateGrammaticale,definition,exemple, antonyme, synonyme,niveau,theme}) => {
+import { FiEdit } from 'react-icons/fi';
+import ButtonSubmit from './form/Button.js';
+
+const CreateCards = ({index, word,cateGrammaticale,definition,exemple, antonyme, synonyme,niveau,theme,onClick}) => {
     return (
-    <Card  key = {index} style={{ width: '38rem', margin:"3rem 25rem", backgroundColor:"ButtonHighlight", padding:"2rem",textAlign:"justify"}}>
+    <Card  style={{ width: '43rem', margin:"3rem 25rem", backgroundColor:"ButtonHighlight", padding:"2rem",textAlign:"justify"}}>
     <Card.Body>
+      {/* <button id={index} style={{marginLeft:"42rem"}} onClick={onClick}><FiEdit/></button> */}
       <h3>{word}</h3>
-      <Card.Subtitle className="mb-2 text-muted">({cateGrammaticale})</Card.Subtitle>
+      <Card.Text className="mb-2 text-muted">({cateGrammaticale})
+      </Card.Text>
       <Card.Text>
-        <b>Définition</b> : {definition}
+        <b>Définition</b> : {definition} 
       </Card.Text>
       <Card.Text>
       <b>Exemple :</b>{exemple}
@@ -21,7 +26,7 @@ const CreateCards = ({index, word,cateGrammaticale,definition,exemple, antonyme,
       <b>Thème :</b> {theme}
       </Card.Text>
       <Card.Text>
-      <b>Niveau :</b> {niveau}
+      <b>Niveau :</b> {niveau}    
       </Card.Text>
     </Card.Body>
   </Card>
