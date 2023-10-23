@@ -13,9 +13,8 @@ import FilterNiveau from './filter/filterNiveau.js';
 import FilterByTheme from './filter/filterByTheme.js';
 import FilterNiveauAndTheme from './filter/filter.js';
 import { FiEdit } from 'react-icons/fi';
-
-
 import "./addEditFilter.css"
+
 const AddVocabIntoList = () => {
 
     const [valueWord, setValueWord] = useState('');
@@ -28,7 +27,6 @@ const AddVocabIntoList = () => {
     const [valueAntonyme,setValueAntonyme] = useState('')
     const [addVocabIntoCard, setAddVocabIntoCard] = useState([...ListVocab])
 
-    const [currentEditingTodo, setCurrentEditingTodo] = useState(0);
 
     console.log(addVocabIntoCard)
 
@@ -101,11 +99,14 @@ const AddVocabIntoList = () => {
     const handleClick = (event) => {
         const id = event.currentTarget.id;
         console.log(id);
+        console.log(addVocabIntoCard[id].niveau)
     }
 
 
     return (
     <Fragment>
+        <div className='addVocab'>
+            <h1>Zone ajouter un nouveau mot</h1>
          <Table id= "tableAddVocab">
             <thead>
                 <tr>
@@ -122,9 +123,10 @@ const AddVocabIntoList = () => {
             <tbody>
                 <tr>
                 <td>
-                    <Input
-                        type="text"
-                        name = "word"
+                    <Textarea
+                         htmlFor="word" 
+                         id="word"
+                         name="word"
                         placeholder = "Ajouter de nouveau mot"
                         value={valueWord}
                         onChange={handleChangeValueWord}
@@ -192,7 +194,6 @@ const AddVocabIntoList = () => {
            
                 <td>
                     <Select
-                    label="Niveau"
                     id="niveau"
                     name="niveau"
                     value={valueNiveau}
@@ -209,7 +210,6 @@ const AddVocabIntoList = () => {
                 </td>
                 <td>
                 <Select
-                    label="Theme"
                     id="theme"
                     name="theme"
                     value={valueThem}
@@ -222,13 +222,25 @@ const AddVocabIntoList = () => {
 
                     </Select>
                 </td>
+                <td>  <ButtonSubmit index="buttonAddVocab" onClick={addNewList}>Ajouter vocabulaire</ButtonSubmit></td>
                 </tr>
             </tbody>
     </Table>
-    <ButtonSubmit index="buttonAddVocab" onClick={addNewList}>Ajouter vocabulaire</ButtonSubmit>
 
-    {addVocabIntoCard.map((list,index) =>  
-   <div key = {index} >
+    </div>
+
+    <div id="zoneFilter">  
+                <h1>Zone Filter</h1>
+                <FilterNiveauAndTheme 
+                addVocabIntoCard={addVocabIntoCard}/>
+        
+   </div>
+
+   <div className='zoneDisplayCard'>
+    <h1>Zone display card</h1>
+    {addVocabIntoCard.map((list,index) => 
+   <div key = {index} className='cardVocab'>
+    
     <CreateCards 
     word= {list.word}
     cateGrammaticale= {list.cateGrammaticale}
@@ -241,19 +253,11 @@ const AddVocabIntoList = () => {
     onClick={handleClick}
     />
 
-    <ButtonSubmit
-    index= {index}
-    onClick={handleClick}
-    ><FiEdit/>Edit Card</ButtonSubmit>
+
+    <ButtonSubmit index= {index} onClick={handleClick}><FiEdit/>Edit Card</ButtonSubmit>
     </div>
   )}
-
-   {/* <div id="zoneFilter">  
-                <h1>Zone Filter</h1>
-                <FilterNiveauAndTheme 
-                addVocabIntoCard={addVocabIntoCard}/>
-        
-   </div> */}
+    </div>
 
    </Fragment>
     )

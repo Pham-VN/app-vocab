@@ -1,3 +1,44 @@
 #zoneFilter {
-    margin: 5% 11%;
+    margin: 2% 10% 0% 26%;
+    border: 2px solid orange;
+    padding: 2%;
+    background-color: rgb(84, 144, 192);
+}
+.cardVocab{
+    background-color:rgb(184, 151, 206);
+    margin: 2% 30%;
+    padding: 2%;
+}
+.addVocab {
+    /* margin: 2% 10%; */
+    margin: 2% 10% 0% 26%;
+    border: 2px solid orange;
+    padding: 1%;
+    background-color: rgb(6, 163, 163);
+}
+#tableAddVocab {
+    width: 100%;
+    padding: 33px;
+}
+#buttonAddVocab {
+    background-color: #5a3988;
+    border-radius: 10px;
+    border: 4px double #cccccc;
+    color: #eeeeee;
+    font-size: 16px;
+    padding: 4px;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin-top: 19px;
+    /* margin:-5% 38%;;*/
+} 
+
+.zoneDisplayCard {
+    margin: 2% 10% 0% 26%;
+    border: 2px solid orange;
+    padding: 2%;
+    background-color: rgb(139, 172, 199);
 }

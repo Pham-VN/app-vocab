@@ -1,14 +1,15 @@
 import Card from 'react-bootstrap/Card';
+import Input from './form/Input.js';
 import { FiEdit } from 'react-icons/fi';
 import ButtonSubmit from './form/Button.js';
 
-const CreateCards = ({index, word,cateGrammaticale,definition,exemple, antonyme, synonyme,niveau,theme,onClick}) => {
+const CreateCards = ({ word,cateGrammaticale,definition,exemple, antonyme, synonyme,niveau,theme,onClick}) => {
     return (
-    <Card  style={{ width: '43rem', margin:"3rem 25rem", backgroundColor:"ButtonHighlight", padding:"2rem",textAlign:"justify"}}>
+    <Card>
     <Card.Body>
-      {/* <button id={index} style={{marginLeft:"42rem"}} onClick={onClick}><FiEdit/></button> */}
       <h3>{word}</h3>
-      <Card.Text className="mb-2 text-muted">({cateGrammaticale})
+      <Card.Text className="mb-2 text-muted">
+     ({cateGrammaticale})
       </Card.Text>
       <Card.Text>
         <b>Définition</b> : {definition} 
