@@ -1,0 +1,9 @@
+.span-word {
+    margin: 5% 15%;
+    width: 100%;
+}
+.word {
+    margin-left: 10px;
+    font-size: 22px;
+    font-family:  sans-serif;
+}
