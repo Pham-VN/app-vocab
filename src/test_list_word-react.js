@@ -15,9 +15,11 @@ function CreateSpan() {
 
     const DisplayParagraphe = ({paragraphe}) => {
         return (
+            <div className='displayParagraphe'>
+                {
             paragraphe.map((sentence,index) => 
-            <p>
-                <span key={index}  id={'s'+index} className='sentence'>
+            // <p>
+                <span   key={index} id={'s'+index} className='sentence'>
             
                     {sentence.words.map((word,index) => 
                     
@@ -33,14 +35,18 @@ function CreateSpan() {
                     </span>
                     )}
                 </span>
-            </p>
-        ))
+            // </p>
+        )
+        }
+        </div>
+                
+        )
     }
 
-
+console.log(listParagraphe1)
     return (
         <div className="span-word">
-            <h1>Les Français et le petit déjeuner.</h1>
+            <h1 className='titleArticle'>Les Français et le petit déjeuner.</h1>
             <Input 
             type = 'text'
             label ="Veuillez taper le mot que vous voulez marquer"
@@ -48,7 +54,6 @@ function CreateSpan() {
             onChange = {(event) => handleChange(event)}
             />
 
-            <h1>P1</h1>
 
             <DisplayParagraphe 
             
@@ -56,7 +61,6 @@ function CreateSpan() {
 
             </DisplayParagraphe>
 
-            <h1>P2</h1>
 
             <DisplayParagraphe 
 
@@ -64,35 +68,30 @@ function CreateSpan() {
 
             </DisplayParagraphe>
 
-            <h1>P3</h1>
 
             <DisplayParagraphe 
 
             paragraphe={listParagraphe3}>
 
             </DisplayParagraphe>
-            <h1>P4</h1>
 
             <DisplayParagraphe 
 
             paragraphe={listParagraphe4}>
 
             </DisplayParagraphe>
-            <h1>P5</h1>
 
             <DisplayParagraphe 
 
             paragraphe={listParagraphe5}>
 
             </DisplayParagraphe>
-            <h1>P6</h1>
 
             <DisplayParagraphe 
 
             paragraphe={listParagraphe6}>
 
             </DisplayParagraphe>
-             <h1>P7</h1>
 
             <DisplayParagraphe 
 
