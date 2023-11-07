@@ -1,7 +1,7 @@
 import Card from 'react-bootstrap/Card';
-import Input from './form/Input.js';
 import { FiEdit } from 'react-icons/fi';
-import ButtonSubmit from './form/Button.js';
+// import Input from '../components/form/Input.js';
+// import ButtonSubmit from '../components/form/Input.js';
 
 const CreateCards = ({ word,cateGrammaticale,definition,exemple, antonyme, synonyme,niveau,theme,onClick}) => {
     return (

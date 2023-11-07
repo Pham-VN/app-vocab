@@ -4,4 +4,3 @@ const ButtonSubmit = ({index,onClick,children}) => {
     <button id={index} onClick={onClick}>{children}</button>)
 }
 export default ButtonSubmit;
-// buttonAddVocab

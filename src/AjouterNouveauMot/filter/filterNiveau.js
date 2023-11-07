@@ -1,21 +1,14 @@
 import { useState } from "react"
-import Select from "../form/Select.js"
+import Select from ".../components/form/Select.js"
 import OptionsNiveau from "../data/OptionsNiveau.js"
-import OptionsTheme from "../data/OptionsTheme.js"
 import CreateCards from "../Card.js"
 
-const FilterNiveauAndTheme = ({addVocabIntoCard}) => {
+const FilterNiveau = ({addVocabIntoCard}) => {
     
     const [selectNewValueNiveau, setSelectNewValueNiveau] = useState('') 
-    const [valueSelectTheme, setValueSelectTheme] = useState('')
-    
 
     const handleChangeValueNiveau = (event) => {
         setSelectNewValueNiveau(event.target.value)
-    }
-
-    const handleSelectByTheme = (event) => {
-        setValueSelectTheme(event.target.value)
     }
 
     return (
@@ -33,21 +26,7 @@ const FilterNiveauAndTheme = ({addVocabIntoCard}) => {
                         })}
         </Select>
 
-        <Select
-             label="Thème"
-             id = "theme"
-             name = "theme"
-             value= {valueSelectTheme}
-             options={OptionsTheme}
-             onChange={handleSelectByTheme}
-            >
-                {OptionsTheme.map((option,index) => {
-                    <option key={index} value={option.value}>{option.label}</option>
-                })
-                }
-        </Select>
-
-            {addVocabIntoCard.filter((addVocabIntoCard) => addVocabIntoCard.niveau === selectNewValueNiveau && addVocabIntoCard.theme === valueSelectTheme).map((list,index) =>    
+            {addVocabIntoCard.filter((addVocabIntoCard) => addVocabIntoCard.niveau === selectNewValueNiveau).map((list,index) =>    
             <CreateCards 
             key = {index}
             word= {list.word}
@@ -63,4 +42,4 @@ const FilterNiveauAndTheme = ({addVocabIntoCard}) => {
     )
 }
 
-export default FilterNiveauAndTheme;
+export default FilterNiveau;

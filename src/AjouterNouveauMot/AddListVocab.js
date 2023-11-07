@@ -3,14 +3,11 @@ import { Fragment, useState } from "react";
 import OptionsCategorie from "./data/OptionsCategorie.js";
 import OptionsNiveau from './data/OptionsNiveau.js'
 import OptionsTheme from './data/OptionsTheme.js'
-import Textarea from "./form/Textarea.js";
-import ButtonSubmit from "./form/Button.js";
-import Input from "./form/Input.js";
-import Select from "./form/Select.js";
+import Textarea from "../components/form/Textarea.js";
+import ButtonSubmit from "../components/form/Button.js";
+import Select from "../components/form/Select.js";
 import ListVocab from "./data/data.js";
 import CreateCards from "./Card.js";
-import FilterNiveau from './filter/filterNiveau.js';
-import FilterByTheme from './filter/filterByTheme.js';
 import FilterNiveauAndTheme from './filter/filter.js';
 import { FiEdit } from 'react-icons/fi';
 import "./addEditFilter.css"
@@ -205,7 +202,7 @@ const AddVocabIntoList = () => {
                         })}
 
                     </Select>
-                    {/* <button onClick={filterNiveau}>test niveau</button> */}
+                    {/* <button onClick={<FilterNiveau/>}>test niveau</button> */}
 
                 </td>
                 <td>

@@ -1,5 +1,5 @@
 import { useState } from "react"
-import Select from "../form/Select.js"
+import Select from ".../components/form/Select.js"
 import OptionsTheme from "../data/OptionsTheme.js"
 import CreateCards from "../Card.js"
 

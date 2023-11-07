@@ -1,14 +1,21 @@
 import { useState } from "react"
-import Select from "../form/Select.js"
+import Select from "/home/clement/Desktop/App-generer-tache/mon-app/src/components/form/Select.js"
 import OptionsNiveau from "../data/OptionsNiveau.js"
+import OptionsTheme from "../data/OptionsTheme.js"
 import CreateCards from "../Card.js"
 
-const FilterNiveau = ({addVocabIntoCard}) => {
+const FilterNiveauAndTheme = ({addVocabIntoCard}) => {
     
     const [selectNewValueNiveau, setSelectNewValueNiveau] = useState('') 
+    const [valueSelectTheme, setValueSelectTheme] = useState('')
+    
 
     const handleChangeValueNiveau = (event) => {
         setSelectNewValueNiveau(event.target.value)
+    }
+
+    const handleSelectByTheme = (event) => {
+        setValueSelectTheme(event.target.value)
     }
 
     return (
@@ -26,7 +33,21 @@ const FilterNiveau = ({addVocabIntoCard}) => {
                         })}
         </Select>
 
-            {addVocabIntoCard.filter((addVocabIntoCard) => addVocabIntoCard.niveau === selectNewValueNiveau).map((list,index) =>    
+        <Select
+             label="Thème"
+             id = "theme"
+             name = "theme"
+             value= {valueSelectTheme}
+             options={OptionsTheme}
+             onChange={handleSelectByTheme}
+            >
+                {OptionsTheme.map((option,index) => {
+                    <option key={index} value={option.value}>{option.label}</option>
+                })
+                }
+        </Select>
+
+            {addVocabIntoCard.filter((addVocabIntoCard) => addVocabIntoCard.niveau === selectNewValueNiveau && addVocabIntoCard.theme === valueSelectTheme).map((list,index) =>    
             <CreateCards 
             key = {index}
             word= {list.word}
@@ -42,4 +63,4 @@ const FilterNiveau = ({addVocabIntoCard}) => {
     )
 }
 
-export default FilterNiveau;
+export default FilterNiveauAndTheme;

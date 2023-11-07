@@ -1,0 +1,61 @@
+
+.span-word {
+    margin: 2% 29%;
+}
+.sentence-item {
+    margin-left: 10px;  
+    display: inline-flex;
+}
+
+.sentence-item {
+    padding: 2px;
+    cursor: pointer;
+    position: relative;
+}
+
+.sentence{
+    font-size: 20px;
+    line-height: 2.1;
+}
+
+span {
+  font-style: inherit;
+  font-weight: inherit;
+}
+
+body {
+    background-color: rgb(242, 242, 242);
+    padding-top: 8.4rem;
+    padding-bottom: 7.2rem;
+}
+
+
+/* Paragraphe */
+.displayParagraphe {
+    font-family: Arial, Helvetica, sans-serif ;
+    margin-bottom: 3rem;
+    line-height: 1.5rem;
+	width: 85%;
+    background-color: white;
+    border-radius: 0.40rem;
+    box-shadow: 0 20px 50px -14px;
+    padding: 16px 12px 32px 24px;
+    font-size: 1rem;
+}
+/*title Article*/
+.titleArticle {
+    text-align:center;
+    font-size:3rem;  
+}
+label {
+    font-size: 1.5rem;
+}
+input {
+    margin: 0.5rem;
+    padding: 1.5rem 2rem;  
+    border-radius: 1rem;
+    background-color: rgb(240, 225, 225);
+    border: black;
+    display: block;
+    transition: all 0.3s;
+}
