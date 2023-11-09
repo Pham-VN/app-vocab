@@ -4,6 +4,7 @@ import DataQuestionPhrase from './QuestionAndPhrase.js';
 import Button from './Button.js';
 import ChangeQuestion from './useInCrement.js'
 import Answers from './Answers.js';
+import './quiz.css'
 
 function DisplayQuiz() {
 
@@ -30,18 +31,21 @@ function DisplayQuiz() {
             children={reponse.texte}
             ></Answers>
         ))}         
-         <Button 
-                type="button" 
-                className="btn btn-dark"
-                onClick={increment}
-                >Next Question</Button>
 
+        <div className='buttonNextAndPrecedent'>
             <Button 
                 type="button" 
-                className="btn btn-dark"
+                className="precedentQuestion"
                 onClick={decrement}
                 >Précedent Question</Button> 
 
+            <Button 
+                type="button" 
+                className="nextQuestion"
+                onClick={increment}
+                >Next Question</Button>
+
+        </div>
         </div>
   );
 }

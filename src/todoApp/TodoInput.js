@@ -64,12 +64,13 @@ const TodoInput = () => {
     <Fragment>   
       <div className="container">
         <h2>My to do list</h2>
+
         <Input 
         type="text"
         placeholder= {editing ? "Edit Task" : "Add Task"}
         value={inputTask}
         onChange = {handleChangeInput}
-        ></Input>
+        />
           
         <Button 
         className = "button-btn"
@@ -101,8 +102,8 @@ const TodoInput = () => {
                 <Button className="edit-button" id={index} onClick={() => handleEditing(index)}>Edit</Button>
                 </li>
             ))}
-        </ul>
-            </div>
+          </ul>
+        </div>
     </Fragment>
 
   )

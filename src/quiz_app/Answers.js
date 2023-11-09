@@ -1,9 +1,10 @@
 import InputRadio from "./InputRadio.js"
 const Answers = ({reponse,children,index}) => {
     return (
-        <div className="card-body" key={index}>
+        <div className="answers" key={index}>
         <label htmlFor={reponse}>
          <InputRadio
+            className='radio'
             type="radio"
             id={index}
             name="partieDuDiscours"

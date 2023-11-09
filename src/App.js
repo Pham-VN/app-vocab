@@ -42,6 +42,3 @@ function App() {
 }
 
 export default App;
-{/* <AddVocabIntoList/> */}
-{/* <CreateSpan></CreateSpan> */}
-{/* <TestAudio/> */}

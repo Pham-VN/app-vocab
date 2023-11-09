@@ -1,0 +1,62 @@
+body {
+    background-color: #d0d6ed;
+}
+.container {
+    background-color: #e9ecf5;
+    outline: 2px solid #2b82f5;
+    border-radius: 10px;
+    padding: 3rem;
+    width: 40%;
+    margin-left: 30%;
+    font-size: 19px;
+    font-family: Arial, Helvetica, sans-serif;    
+}
+.answers {
+    border: 2px solid rgb(43, 9, 9);
+    border-radius: 20px;
+    margin: 1.5rem;
+    width: 60%;
+}
+
+label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+input {
+    margin: 0rem 1.5rem;
+}
+
+button {
+    padding: 1rem;
+    font-size: large;
+    margin: 1rem 0.5rem;
+}
+
+.buttonNextAndPrecedent {
+    display: flex;
+    justify-content: center;
+}
+.nextQuestion {
+    background-color:#0c2749;
+    color: white;
+}
+.precedentQuestion {
+    display: inline-block;
+    background-color:#0c2749;
+    color: white;
+}
+.question {
+    font-size: 26px;
+    margin: 0px;
+}
+.phrase {
+    font-size: 22px;
+    margin: 2rem 0rem;
+    font-style: italic;
+}
+.radio {
+    background-color: #fff;
+    width: 1rem;
+    height: 1.15em;
+}

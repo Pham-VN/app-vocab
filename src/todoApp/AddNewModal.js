@@ -4,8 +4,7 @@ import Table from 'react-bootstrap/Table';
 import Button from './FORM/Button.js';
 import {useState } from 'react';
 import { FaTrash, FaPen } from "react-icons/fa";
-// import StatusTodoList from "./FORM/Selection.js"
-
+import "./todo.css"
 
 const AddDeleteEditTodo = () => {
 
@@ -14,7 +13,9 @@ const AddDeleteEditTodo = () => {
   const [editing,setEditing] = useState(false)
   const [currentEditingTodo, setCurrentEditingTodo] = useState(0);
 
-  const [objetTest, setObjetTest] =  useState([])
+  // const [objetTest, setObjetTest] =  useState([])
+
+  const [inputStatus, setInputStatus] = useState('')
 
   // const newTestList = list
   // const newTestObjet = objetTest
@@ -82,34 +83,39 @@ const AddDeleteEditTodo = () => {
   // }
 
 
-  const handleChangeID = (event) => {
+//   const handleChangeID = (event) => {
     
 
-    const index = event.target.selectedIndex;
-    const indexElement = event.target.childNodes[index].id;
-    const titleElement = event.target.childNodes[index].value;
+//     const index = event.target.selectedIndex;
+//     const indexElement = event.target.childNodes[index].id;
+//     const titleElement = event.target.childNodes[index].value;
 
 
-    const newObjet = {
-      id: indexElement,
-      titleElement: titleElement,
+//     const newObjet = {
+//       id: indexElement,
+//       titleElement: titleElement,
      
-    }
+//     }
 
-    setObjetTest([...objetTest,newObjet])
+//     setObjetTest([...objetTest,newObjet])
 
 
 
-}
+// }
   
-
+const handleChangeStatus = (e) => {
+  setInputStatus(e.target.value)
+}
   return (
     
-    <Container style={{ width: '40rem' }}>
+    <Container>
       
       <h2 style={{color: 'blue'}}>Create New Task</h2>
       
-      <Input style={{ width: "32rem" }}
+      <div className="form-input-text">
+
+      <Input
+        className ="add-edit-task"
         type="text"
         value={inputValue}
         placeholder= {editing ? "Edit Task" : "Add Task"}
@@ -118,11 +124,12 @@ const AddDeleteEditTodo = () => {
 
       ></Input>
 
-      <Button onClick = {editing ?  () => handleEditTodo(currentEditingTodo) : () => handleAddTodo()}>{editing ? "Edit Task" : "Add Task"}</Button>
+      <Button className = "button-add-edit" onClick = {editing ?  () => handleEditTodo(currentEditingTodo) : () => handleAddTodo()}>{editing ? "Edit Task" : "Add Task"}</Button>
 
+      </div>
 
-      <p style={{marginTop: "1.5rem"}}> Choisir Status {
-       <select name="selectedStatus"  onChange={handleChangeID}>
+      <p className='status'> Choisir Status {
+       <select name="selectedStatus"  onChange={handleChangeStatus}>
           <option id = "null"   value="Null">---</option>
           <option id = "notStarted"   value="Not Started">Not started</option>
           <option id = "started"      value="Started">Started</option>
@@ -131,7 +138,7 @@ const AddDeleteEditTodo = () => {
       </select>
       }</p>
 
-      <Table style={{width: '35rem', margin: "2rem 0rem"}}>
+      <Table className='table-todo'>
 
 <thead>
         <tr>
@@ -140,7 +147,7 @@ const AddDeleteEditTodo = () => {
           <th>Edit</th>
           <th>Effacer</th>
           <th>Status</th>
-          <th>ID Select</th>
+          {/* <th>ID Select</th> */}
         </tr>
 </thead>
 <tbody>
@@ -151,7 +158,6 @@ const AddDeleteEditTodo = () => {
       <td>{todo.time}</td>
       <td>
         <Button 
-        style={{border:"none",background:"none"}} 
         id={index}
         onClick={() => handleEditing(index)}>
         <FaPen/></Button>
@@ -159,12 +165,11 @@ const AddDeleteEditTodo = () => {
     <td>   
       <Button 
         id= {index} 
-        style={{border:"none",background:"none"}} 
         onClick={() =>handleDeleteTask(todo.id)}>
         <FaTrash/></Button> 
       </td>
-      <td>{todo.status}</td>
-      <td>{todo.idSelect}</td>
+      <td>{inputStatus}</td>
+      {/* <td>{todo.idSelect}</td> */}
     </tr>
     ))
 }
